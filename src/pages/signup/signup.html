@@ -35,9 +35,11 @@
 
     <ion-item>
       <ion-label stacked>CPF or CNPJ</ion-label>
-      <ion-input formControlName="cpfOuCnpj" type="text"></ion-input>
+      <ion-input formControlName="numeroCadastroNacional" type="text"></ion-input>
     </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.cpfOuCnpj.dirty && formGroup.controls.cpfOuCnpj.errors" margin-left>
+    <p class="danger"
+      *ngIf="formGroup.controls.numeroCadastroNacional.dirty && formGroup.controls.numeroCadastroNacional.errors"
+      margin-left>
       Invalid value
     </p>
     <ion-item>
@@ -73,23 +75,23 @@
       <ion-label stacked>Zip code*</ion-label>
       <ion-input formControlName="cep" type="text"></ion-input>
     </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>
+    <p class="danger" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors" margin-left>
       Invalid value
     </p>
     <ion-item>
       <ion-label stacked>Phone 1*</ion-label>
-      <ion-input formControlName="telefone1" type="text"></ion-input>
+      <ion-input formControlName="telefone" type="text"></ion-input>
     </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>
+    <p class="danger" *ngIf="formGroup.controls.telefone.dirty && formGroup.controls.telefone.errors" margin-left>
       Invalid value
     </p>
     <ion-item>
       <ion-label stacked>Phone 2</ion-label>
-      <ion-input formControlName="telefone2" type="text"></ion-input>
+      <ion-input formControlName="telefone1" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Phone 3</ion-label>
-      <ion-input formControlName="telefone3" type="text"></ion-input>
+      <ion-input formControlName="telefone2" type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>State*</ion-label>

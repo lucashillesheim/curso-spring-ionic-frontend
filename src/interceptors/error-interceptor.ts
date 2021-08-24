@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS
 import { Injectable } from "@angular/core";
 import { AlertController } from "ionic-angular";
 import { Observable } from "rxjs/Rx";
+import { FieldMessage } from "../models/fieldMessage";
 import { StorageService } from "../services/storage.service";
 
 @Injectable()
@@ -33,7 +34,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                     case 403:
                         this.handle403()
                         break;
-
+                    case 422:
+                        this.handl422(errorObj)
+                        break;
                     default:
                         this.handleDefaultError(errorObj)
                         break;
@@ -47,12 +50,16 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.alert(`Error ${errorObj.status}: ${errorObj.error}`, errorObj.message)
     }
 
+    handle401() {
+        this.alert('Error 401: Authentication failure', 'Email or password invalid')
+    }
+
     handle403() {
         this.storage.setLocalUser(null)
     }
 
-    handle401() {
-        this.alert('Error 401: Authentication failure', 'Email or password invalid')
+    handl422(errorObj: any) {
+        this.alert('Error 422: Validation Error', this.listErrors(errorObj.errors))
     }
 
     alert(title: string, message: string) {
@@ -67,6 +74,14 @@ export class ErrorInterceptor implements HttpInterceptor {
             ]
         })
         alert.present()
+    }
+
+    private listErrors(messages: Array<FieldMessage>): string {
+        let s: string = '';
+        for (var i = 0; i < messages.length; i++) {
+            s = s + '<p><strong>' + messages[i].fieldName + "</strong>: " + messages[i].message + '</p>';
+        }
+        return s;
     }
 }
 
