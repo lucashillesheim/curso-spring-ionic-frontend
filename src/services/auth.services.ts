@@ -23,7 +23,16 @@ export class AuthService {
             });
     }
 
-    successfullogin(authorizationValue: string) {
+    refreshToken() {
+        return this.http.post(`${API_CONFIG.baseUrl}/auth/refresh_token`,
+            {},
+            {
+                observe: 'response',
+                responseType: 'text'
+            });
+    }
+
+    successfulLogin(authorizationValue: string) {
         let tok = authorizationValue.substring(7);
         let user: LocalUser = {
             token: tok,
