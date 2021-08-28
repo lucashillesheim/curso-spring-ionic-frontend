@@ -3,14 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title *ngIf="codpedido">Order registred!</ion-title>
-    <ion-title *ngIf="!codpedido">Check your order</ion-title>
+    <ion-title *ngIf="codPedido">Order registered!</ion-title>
+    <ion-title *ngIf="!codPedido">Check your order</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div *ngIf="!codpedido">
+  <div *ngIf="!codPedido">
     <ion-card>
       <ion-card-header>
         <b>Order's items</b>
@@ -74,13 +74,13 @@
     <button ion-button block outline (click)="back()">Back</button>
   </div>
 
-  <div *ngIf="codpedido">
+  <div *ngIf="codPedido">
     <ion-card>
       <ion-card-header>
         Your order was registered!
       </ion-card-header>
       <ion-item>
-        <h2>Order code: {{codpedido}}</h2>
+        <h2>Order code: {{codPedido}}</h2>
         <p>Check your email</p>
       </ion-item>
     </ion-card>
