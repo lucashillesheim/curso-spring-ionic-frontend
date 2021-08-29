@@ -14,8 +14,9 @@ export class ProdutoService {
         return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/products/${produtoId}`);
     }
 
-    findByCategoria(categoriaId: string) {
-        return this.http.get(`${API_CONFIG.baseUrl}/products/?categorias=${categoriaId}`);
+    findByCategoria(categoriaId: string, page: number = 0, perPage: number = 24) {
+        return this.http
+            .get(`${API_CONFIG.baseUrl}/products/?categorias=${categoriaId}&page=${page}&perPage=${perPage}`);
     }
 
     getThumbnailFromBucket(id: string): Observable<any> {
